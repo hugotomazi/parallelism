@@ -11,16 +11,17 @@
 #include <random>
 #include <string>
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
-#define LINHAS 5
-#define COLUNAS 3
+#define LINHAS 3
+#define COLUNAS 2
 
 
 int m1[LINHAS][COLUNAS];
 int m2[COLUNAS][LINHAS];
-string resultado[LINHAS][COLUNAS];
+int resultado[LINHAS][COLUNAS];
 
 void initMatrix() {
     random_device dev;
@@ -28,7 +29,6 @@ void initMatrix() {
     uniform_int_distribution<mt19937::result_type> dist6(0,LINHAS*COLUNAS);
     for(int i = 0; i < LINHAS; ++i) {
         for(int j = 0; j < COLUNAS; ++j) {
-            
             m1[i][j] = dist6(rng);
             m2[j][i] = dist6(rng);
         }
@@ -38,19 +38,15 @@ void initMatrix() {
 int main(int argc, char *argv[]) {
     initMatrix();
 
+    clock_t inicio = clock();
     #pragma omp parallel for
     for(int i = 0; i < LINHAS; ++i) {
         for(int j = 0; j < COLUNAS; ++j) {
-            string res = to_string(m1[i][j] * m2[j][i]);
-            resultado[i][j] = res + "(" + to_string(omp_get_thread_num()) + ")";
+            resultado[i][j] = m1[i][j] * m2[j][i];
         }
     }
+    clock_t fim = clock();
 
-    for(int i = 0; i < LINHAS; ++i) {
-        for(int j = 0; j < COLUNAS; ++j) {
-            cout << resultado[i][j] << " ";
-        }
-        cout << endl;
-    }
+    cout << "Tempo de execução: " << (fim - inicio) << endl;
     return 0;
 }
