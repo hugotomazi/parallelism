@@ -4,19 +4,18 @@
 
     Autor: Hugo Tomazi Busnardo
 
-
+    Comando para build:
+    g++ -fopenmp main.cpp -o build/openmp
 */
 #include <omp.h>
-#include <stdlib.h>
 #include <random>
-#include <string>
 #include <iostream>
 #include <time.h>
 
 using namespace std;
 
-#define LINHAS 3
-#define COLUNAS 2
+#define LINHAS 100
+#define COLUNAS 500
 
 
 int m1[LINHAS][COLUNAS];
@@ -36,16 +35,17 @@ void initMatrix() {
 }
 
 int main(int argc, char *argv[]) {
+    double inicio, fim;
     initMatrix();
 
-    clock_t inicio = clock();
+    inicio = (double) clock() / CLOCKS_PER_SEC;
     #pragma omp parallel for
     for(int i = 0; i < LINHAS; ++i) {
         for(int j = 0; j < COLUNAS; ++j) {
             resultado[i][j] = m1[i][j] * m2[j][i];
         }
     }
-    clock_t fim = clock();
+    fim = (double) clock() / CLOCKS_PER_SEC;
 
     cout << "Tempo de execução: " << (fim - inicio) << endl;
     return 0;
