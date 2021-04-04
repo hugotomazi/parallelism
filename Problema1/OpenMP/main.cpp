@@ -6,6 +6,8 @@
 
     Comando para build:
     g++ -fopenmp main.cpp -o build/openmp
+
+    teste
 */
 #include <omp.h>
 #include <random>
