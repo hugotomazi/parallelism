@@ -15,8 +15,8 @@
 
 using namespace std;
 
-#define LINHAS 100
-#define COLUNAS 500
+#define LINHAS 5000
+#define COLUNAS 5000
 
 
 int m1[LINHAS][COLUNAS];
@@ -40,7 +40,6 @@ void initMatrix() {
 int main(int argc, char *argv[]) {
     double inicio, fim;
     int qtdTHREADS = get_nprocs_conf();
-    
     initMatrix();
 
     inicio = (double) clock() / CLOCKS_PER_SEC;
