@@ -1,7 +1,6 @@
 /*
     UNIVALI - Universidade do Vale do Itajaí
     Trabalho desenvolvido para a disciplina de Sistemas Operacionais
-
     Autor: Hugo Tomazi Busnardo
 
     Comando para build:
@@ -37,6 +36,8 @@ void initMatrix() {
 int main(int argc, char *argv[]) {
     double inicio, fim;
     initMatrix();
+    omp_set_num_threads(2);
+    cout << omp_get_num_threads();
 
     inicio = (double) clock() / CLOCKS_PER_SEC;
     #pragma omp parallel for
