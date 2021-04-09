@@ -1,10 +1,12 @@
+#include <omp.h>
+#include <random>
 #include <iostream>
 #include <time.h>
-#include <random>
 
 using namespace std;
 
-#define TAMANHO 150000
+#define TAMANHO 10
+
 
 float vetor[TAMANHO];
 float resultado = 0;
@@ -21,8 +23,12 @@ void inicia_vetor() {
 int main(int argc, char *argv[]) {
     double inicio, fim;
     inicia_vetor();
+    omp_set_num_threads(2);
+    cout << omp_get_num_threads();
 
     inicio = (double) clock() / CLOCKS_PER_SEC;
+
+    #pragma omp parallel for
     for(int i = 0; i < TAMANHO; ++i) {
         resultado = resultado + vetor[i];
     }
