@@ -1,12 +1,9 @@
-/*
-    UNIVALI - Universidade do Vale do Itajaí
-    Trabalho desenvolvido para a disciplina de Sistemas Operacionais
 
-    Autor: Rafael dos Santos
-
-    Comando para build:
-    g++ -fopenmp main.cpp -o build/openmp
-*/
+// UNIVALI - Universidade do Vale do Itajaí
+//  Trabalho desenvolvido para a disciplina de Sistemas Operacionais
+//  Autor: Rafael dos Santos
+//  Comando para build:
+//   g++ -fopenmp main.cpp -o build/openmp
 
 #include <omp.h>
 #include <random>
@@ -15,7 +12,7 @@
 
 using namespace std;
 
-#define TAMANHO 150000
+#define TAMANHO 500000
 
 
 int vetor[TAMANHO];

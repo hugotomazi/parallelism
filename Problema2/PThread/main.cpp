@@ -18,8 +18,8 @@ using namespace std;
 
 #define TAMANHO 150000
 
-float vetor[TAMANHO];
-float resultado = 0.0;
+int vetor[TAMANHO];
+int resultado = 0.0;
 
 void *execThread(void *params);
 
