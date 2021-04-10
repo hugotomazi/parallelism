@@ -1,3 +1,12 @@
+/*
+    UNIVALI - Universidade do Vale do Itajaí
+    Trabalho desenvolvido para a disciplina de Sistemas Operacionais
+    Autor: Hugo Tomazi Busnardo
+
+    Comando para build:
+    g++ main.cpp -o build/single-thread
+*/
+
 #include <iostream>
 #include <random>
 #include <time.h>
